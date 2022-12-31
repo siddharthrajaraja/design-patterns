@@ -1,4 +1,4 @@
-package singleton_pattern
+package main
 
 import (
 	"github.com/golang/mock/gomock"
