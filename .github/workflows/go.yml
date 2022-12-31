@@ -25,7 +25,7 @@ jobs:
       run: go build -v ./...
 
     - name: Test
-      run: go test -covermode=count -v -cover  ../../...   -coverprofile=cover.out &&
+      run: go test -covermode=count -v -cover  ./creational-pattern/...   -coverprofile=cover.out &&
             go tool cover -func=cover.out | grep total | awk '{print substr($3, 1, length($3)-3)}' | {
                 read -r message; EXPECTED_COV=80;
                 if [ "$message" -lt $EXPECTED_COV ];
