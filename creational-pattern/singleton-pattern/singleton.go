@@ -1,4 +1,4 @@
-package main
+package singleton_pattern
 
 type Singleton interface {
 	AddOne() int
