@@ -4,16 +4,12 @@
 
 ## Objectives
 
----
-
 1. A single,shared value of some particular type
 2. Restrict object creation of some type to a single unit along the entire program.
 
 > Later we have Singleton implementation for Multithreading.
 
 ## Where is this used?
-
---- 
 
 1. Database connection to make every query
 2. Open SSH connection to a server to do a few tasks, and don't want to reopen the connection for each task
