@@ -1,0 +1,36 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -covermode=count -v -cover  ./...   -coverprofile=cover.out &&
+            go tool cover -func=cover.out | grep total | awk '{print substr($3, 1, length($3)-3)}' | {
+                read -r message; EXPECTED_COV=80;
+                if [ "$message" -lt $EXPECTED_COV ];
+                then  echo "FAILED, as Coverage is $message lesser then $EXPECTED_COV";
+                else  echo "PASSED, as Coverage is $message greater then $EXPECTED_COV";
+                fi
+            }
+
