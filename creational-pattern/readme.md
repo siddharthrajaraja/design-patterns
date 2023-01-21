@@ -8,3 +8,4 @@
 ## Types of Creational Patterns?
 
 ### [Singleton Design pattern](./singleton-pattern/readme.md)
+### [Factory Design pattern](./factory-pattern/readme.md)
